@@ -27,8 +27,8 @@ const PlantCard = ({ plant }) => {
       </Pressable>
       <Text>{plant.name}</Text>
       <Text numberOfLines={2}>{plant.description}</Text>
-      <Text>Rp {plant.price}</Text>
-      <Button title="Buy" onPress={handleBuy} />
+      <Text> {plant.price}</Text>
+      <Button title="Description" onPress={handleBuy} />
     </View>
   );
 };

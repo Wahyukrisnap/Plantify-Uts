@@ -1,30 +1,33 @@
-// app/detail.tsx
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { useLocalSearchParams } from "expo-router";
-import { View, Text, Image, ScrollView } from "react-native";
 
-const Detail = () => {
-  const { plant } = useLocalSearchParams();
-
-  // params berupa string, kita harus parse kembali
-  const parsedPlant = typeof plant === "string" ? JSON.parse(plant) : plant;
+export default function DetailPage() {
+  const { title, description } = useLocalSearchParams();
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 20 }}>
-      <Image
-        source={parsedPlant.image}
-        style={{ width: "100%", height: 250, borderRadius: 12 }}
-      />
-      <Text style={{ fontSize: 24, fontWeight: "bold", marginVertical: 10 }}>
-        {parsedPlant.name}
-      </Text>
-      <Text style={{ fontSize: 16, marginBottom: 20 }}>
-        {parsedPlant.description}
-      </Text>
-      <Text style={{ fontSize: 18, fontWeight: "600" }}>
-        {parsedPlant.price}
-      </Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.description}>{description}</Text>
     </ScrollView>
   );
-};
+}
 
-export default Detail;
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "#2E7D32",
+    marginBottom: 12,
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: "#2E7D32",
+    backgroundColor: "#f9fafb",
+    padding: 14,
+    borderRadius: 10,
+  },
+});
